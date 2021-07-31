@@ -44,6 +44,8 @@ class BaseEntity(object):
             if isinstance(attr, Attribute):
                 value = getattr(self, attrname)
                 d[attrname] = attr.marshal(value)
+            if hasattr(self, "id"):
+                d["id"] = self.id
         return d
 
     def from_dict(self, d):
